@@ -53,19 +53,19 @@ module "azurerm_vnet_1" {
 ## Arguments
 | Name | Type | Description |
 | --- | --- | --- |
-| `vnet_name` | `string` | (Required) Name of the virtual network (vNet). |
-| `resource_group_name` | `string` | (Required) Name of an specific resource group. |
-| `location` | `string` | (Optional) Azure region where the vNet located. Default is existing resource group's region. |
-| `address_space` | `list(string)` | (Optional) Assign the IPv4 address space for the virtual network in. Default is ["10.0.0.0/16"]. |
-| `tags` | `map` | (Optional) Tags for the vNet. Default is existing resource group's tags. |
+| `vnet_name` | *string* | (Required) Name of the virtual network (vNet). |
+| `resource_group_name` | *string* | (Required) Name of an specific resource group. |
+| `location` | *string* | (Optional) Azure region where the vNet located. Default is existing resource group's region. |
+| `address_space` | *list(string)* | (Optional) Assign the IPv4 address space for the virtual network in. Default is ["10.0.0.0/16"]. |
+| `tags` | *map* | (Optional) Tags for the vNet. Default is existing resource group's tags. |
 ## Attributes
 | Name | Type | Description |
 | --- | --- | --- |
-| `id` | `string` | ID of the virtual network (vNet). |
-| `name` | `string` | Name of the virtual network (vNet). |
-| `subscription_id` | `string` | Subscription ID where the vNet located. |
-| `resource_group_name` | `string` | Resource group name where the vNet located. |
-| `address_space` | `list(string)` | List of defined address space |
+| `id` | *string* | ID of the virtual network (vNet). |
+| `name` | *string* | Name of the virtual network (vNet). |
+| `subscription_id` | *string* | Subscription ID where the vNet located. |
+| `resource_group_name` | *string* | Resource group name where the vNet located. |
+| `address_space` | *list(string)* | List of defined address space |
 ## References
 - https://github.com/terraform-azurerm-modules/terraform-azurerm-vnet
 ## Author
