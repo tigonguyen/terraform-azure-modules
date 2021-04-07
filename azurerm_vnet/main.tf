@@ -1,20 +1,11 @@
-  
-terraform {
-  required_providers {
-    azurerm = ">= 2.8.0" // For move to address_prefixes
-  }
+data "azurerm_resource_group" "main" {
+  name = var.resource_group_name
 }
 
-# Create resource group
-resource "azurerm_resource_group" "main" {
-  name     = "${var.prefix_name}_rg" # resource group name
-  location = var.rg_region # Azure region
-}
-
-# Create VNET
 resource "azurerm_virtual_network" "main" {
-  name                = "${var.prefix_name}_vnet" 
-  location            = var.rg_region  # Azure region
-  resource_group_name = azurerm_resource_group.main.name # resource group name
-  address_space       = var.vnet_ip_range
+  name                = var.vnet_name
+  resource_group_name = data.azurerm_resource_group.main.name
+  location            = var.location == null ? data.azurerm_resource_group.main.location : var.location
+  tags                = var.tags == null ? data.azurerm_resource_group.main.tags : var.tags
+  address_space       = var.address_space
 }
