@@ -14,6 +14,7 @@ This module help you to initialize your Azure virtual network before you develop
 | `azurerm` | `hashicorp/azurerm` | >=2.46.0 |
 ## Usage
 ```
+# Configure the Hashicorp Vault provider
 provider "vault" {
   # It is strongly recommended to configure this provider through the
   # environment variables described above, so that each user can have
@@ -45,6 +46,7 @@ module "azurerm_vnet_1" {
   source              = "../azurerm_vnet"
 
   vnet_name           = "example_vnet"
+  address_space       = [ "192.168.0.0/24" ]
   resource_group_name = module.azurerm_vnet.vnet["resource_group_name"]
 }
 ```
