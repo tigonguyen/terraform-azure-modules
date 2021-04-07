@@ -52,4 +52,6 @@ module "azurerm_vnet" {
 | `tags` | `map` | (Optional) Tags for the vNet. Default is existing resource group's tags. |
 ## Outputs
 ## References
+- https://github.com/terraform-azurerm-modules/terraform-azurerm-vnet
 ## Author
+- **[Thanh, Dinh Nguyen](https://github.com/tigonguyen)** 
