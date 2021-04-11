@@ -31,3 +31,9 @@ variable "subnet_list" {
   description = "List of subnet with the form is SubnetName:IP range"
   default     = {} 
 }
+
+variable "ddos" {
+  type        = bool
+  description = "Boolean to deploy [Azure DDOS Protection](https://azure.microsoft.com/services/ddos-protection/). Default: false."
+  default     = false
+}

@@ -15,32 +15,15 @@ This module help you to initialize your Azure virtual network before you develop
 | `azurerm` | `hashicorp/azurerm` | >=2.46.0 |
 ## Usage
 ```
-# Configure the Hashicorp Vault provider
-provider "vault" {
-  # It is strongly recommended to configure this provider through the
-  # environment variables described above, so that each user can have
-  # separate credentials set in the environment.
-  #
-  # This will default to use $VAULT_ADDR and $VAULT_TOKEN
-}
-
-data "vault_generic_secret" "service_principle" {
-  path = "azure/service_test"
-}
-
-provider "azurerm" {
-  features {}
-  subscription_id = data.vault_generic_secret.service_principle.data["subscription"]
-  client_id       = data.vault_generic_secret.service_principle.data["appId"]
-  client_secret   = data.vault_generic_secret.service_principle.data["password"]
-  tenant_id       = data.vault_generic_secret.service_principle.data["tenant"]
-}
-
 module "azurerm_vnet" {
   source              = "../azurerm_vnet"
 
   name                = "example_vnet"
   resource_group_name = "test_rg"
+  subnet_list                = {
+    AzureFirewallSubnet      = "10.0.0.0/26"
+    GatewaySubnet            = "10.0.0.224/27"
+  }
 }
 
 module "azurerm_vnet_1" {
