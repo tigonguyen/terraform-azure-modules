@@ -35,14 +35,18 @@ provider "azurerm" {
 module "azurerm_vnet" {
   source              = "../azurerm_vnet"
 
-  vnet_name           = "example_vnet"
+  name                = "example_vnet"
   resource_group_name = "test_rg"
+  subnet_list                = {
+    AzureFirewallSubnet      = "10.0.0.0/26"
+    GatewaySubnet            = "10.0.0.224/27"
+  }
 }
 
 module "azurerm_vnet_1" {
   source              = "../azurerm_vnet"
 
-  vnet_name           = "example_vnet"
+  name                = "example_vnet_1"
   address_space       = [ "192.168.0.0/24" ]
   resource_group_name = module.azurerm_vnet.vnet["resource_group_name"]
 }

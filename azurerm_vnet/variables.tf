@@ -9,7 +9,7 @@ variable "location" {
   default     = null
 }
 
-variable "vnet_name" {
+variable "name" {
   type        = string
   description = "(Required) Name of the virtual network (vNet)."
 }
@@ -24,4 +24,10 @@ variable "tags" {
   type        = map
   description = "Map of key value pairs for the resource tagging."
   default     = null
+}
+
+variable "subnet_list" {
+  type        = map(string)
+  description = "List of subnet with the form is SubnetName:IP range"
+  default     = {} 
 }
